@@ -8,14 +8,13 @@
 
     <TextView
         android:id="@+id/nameTextView"
+        style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:text="이름"
-        style="@style/Title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nameEditText"
@@ -23,8 +22,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
-        android:inputType="text"
         android:ellipsize="end"
+        android:inputType="text"
         android:maxLines="1"
         app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,11 +55,10 @@
         android:id="@+id/birthdateImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/nameEditText"
-        app:layout_constraintTop_toTopOf="@id/birthdateTextView"
-        app:layout_constraintBottom_toBottomOf="@id/birthdateTextView"
         android:src="@drawable/ic_baseline_edit_calendar_24"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/birthdateTextView"
+        app:layout_constraintEnd_toEndOf="@id/nameEditText"
+        app:layout_constraintTop_toTopOf="@id/birthdateTextView" />
 
     <TextView
         android:id="@+id/bloodTextView"
@@ -76,21 +74,21 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/bloodTextView"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@id/bloodTextView"
-        app:layout_constraintBottom_toBottomOf="@id/bloodTextView">
+        app:layout_constraintTop_toTopOf="@id/bloodTextView">
 
         <RadioButton
             android:id="@+id/bloodTypePlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rh+"/>
+            android:text="Rh+" />
 
         <RadioButton
             android:id="@+id/bloodTypeMinus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rh-"/>
+            android:text="Rh-" />
 
     </RadioGroup>
 
@@ -135,8 +133,8 @@
         android:id="@+id/warningCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="주의사항 노출"
         android:gravity="end|center_vertical"
+        android:text="주의사항 노출"
         app:layout_constraintBottom_toBottomOf="@+id/warningTextView"
         app:layout_constraintEnd_toEndOf="@+id/nameEditText"
         app:layout_constraintStart_toStartOf="@id/warningEditText"
@@ -148,9 +146,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="주의사항"
-        app:layout_constraintTop_toBottomOf="@+id/warningCheckBox"
         app:layout_constraintEnd_toEndOf="@+id/nameEditText"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/warningCheckBox" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -160,14 +158,21 @@
         app:layout_constraintGuide_percent="0.4" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/goInputActivityButton"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:layout_margin="36dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
+        app:srcCompat="@drawable/ic_baseline_save_24" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/birthdateLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="birthdateValueTextView,birthdateImageView"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
