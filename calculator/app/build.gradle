@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'fastcampus.part1.calculator'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "fastcampus.part1.calculator"
@@ -29,6 +29,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
     }
 }
 
