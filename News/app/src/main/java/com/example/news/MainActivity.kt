@@ -48,19 +48,26 @@ class MainActivity : AppCompatActivity() {
 
                 val list = response.body()?.channel?.items.orEmpty().transform()
                 newsAdapter.submitList(list)
-                list.forEach {
+                list.forEachIndexed() { index, news ->
                     Thread {
-                        val item = list.first()
+                        try {
+                            val jsoup = Jsoup.connect(news.link).get()
+                            val elements = jsoup.select("meta[property^=og:]")
+                            val ogImageNode = elements.find { node ->
+                                node.attr("property") == "og:image"
+                            }
 
-                        val jsoup = Jsoup.connect(item.link).get()
-                        val elements = jsoup.select("meta[property^=og:]")
-                        val ogImageNode = elements.find { node ->
-                            node.attr("property") == "og:image"
+                            news.imageUrl = ogImageNode?.attr("content")
+                            Log.e("MainActivity", "imager: ${news.imageUrl}")
+                        } catch (e: java.lang.Exception) {
+                            e.printStackTrace()
                         }
-                        it.imageUrl = ogImageNode?.attr("content")
+
+                        runOnUiThread {
+                            newsAdapter.notifyItemChanged(index)
+                        }
                     }.start()
                 }
-
 
 
             }
